@@ -1,0 +1,16 @@
+{
+    "name": "daw2/dew-tema4",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Daw2\\DewTema4\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Yeray Navarro",
+            "email": "yeraynp16@gmail.com"
+        }
+    ],
+    "require": {}
+}
