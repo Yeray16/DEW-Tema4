@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      padding: 20px;
+    }
+    .div1{
+      background-color: lightblue;
+    }
+    .div2{
+      background-color: lightcoral;
+    }
+    .div3 {
+      background-color: lightgreen;
+    }
+    h1, h2, h3 {
+      border: 1px dotted grey;
+    }
+  </style>
+</head>
+<body>
+  <div class="div1">
+    <h1>División Principal</h1>
+    <div class="div2">
+      <h2>División Secundaria</h2>
+      <div class="div3">
+        <h3>División Terciaria</h3>
+      </div>
+    </div>
+  </div>
+  <a href="http://ieslasgalletas.org">Las galletas</a>
+  <script>
+    document.querySelector('.div1').addEventListener('click', (e)=>{
+      console.log('Principal');
+      console.log('target ',e.target);
+      console.log('currentTarget ',e.currentTarget);
+      if(e.ctrlKey){
+        e.target.remove();
+      }
+      if(e.altKey) {
+        e.currentTarget.remove();
+      }
+    }, {capture:true}); // Con capture damos prioridad al ejecutarse
+    document.querySelector('.div2').addEventListener('click', ()=>console.log('Secundaria'), {once: true}); // Una vez que se ha ejecutado ya se elimina
+    document.querySelector('.div3').addEventListener('click', (e)=>{
+      console.log('Terciaria')
+      e.stopPropagation();
+    });
+
+    document.querySelector('a').addEventListener('click', (e)=>{
+      console.log('Pulso el enlace')
+      e.preventDefault();  
+      }, {passive: true});
+</script>
+</body>
+</html>

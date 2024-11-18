@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #canvas {
+      border: 1px solid black;
+      margin: 10px;
+      box-shadow: 5px 5px 10px grey;
+      height: 500px;
+      position: relative;
+    }
+    .box{
+      background-color: blue;
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Editor gráfico</h1>
+  <div id="canvas"></div>
+  <script>
+    const canvas = document.querySelector('#canvas')
+    const paint = (e) => {
+      let x = e.clientX -canvas.offsetLeft;
+      let y = e.clientY - canvas.offsetTop;
+      const box = document.createElement('div');
+      box.classList.add('box');
+      box.style.top = y + 'px';
+      box.style.left = x + 'px';
+      canvas.append(box);
+    }
+    canvas.addEventListener('mousedown', () =>canvas.addEventListener('mousemove', paint))
+    canvas.addEventListener('mousedown', () =>canvas.addEventListener('mousemove', paint))
+  </script>
+</body>
+</html>
