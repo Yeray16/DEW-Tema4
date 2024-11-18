@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="provincias.js"></script>
+  <script src="municipios.js"></script>
+</head>
+<body>
+  <form action="">
+    <p>
+      Provincia:
+      <select name="district" id="district">
+        <option disabled selected>Elige una provincia</option>
+      </select>
+    </p>
+    <p id="townChoose" hidden>
+      Municipio:
+      <select name="town" id="town">
+        <option disabled selected>Elige un municipio</option>
+      </select>
+    </p>
+  </form>
+  <script>
+    const district = document.getElementById('district');
+    const town = document.getElementById('town');
+
+    PROVINCIAS.forEach(prov => {
+      const option = document.createElement('option');
+      option.textContent = prov.nombre;
+      option.value = prov.idProvincia;
+      district.append(option);      
+    });
+
+    district.addEventListener('change', () => {
+      document.getElementById('townChoose').hidden = false;
+      console.log('mostrando')
+    }, {once : true});
+
+    district.addEventListener('change', () => {
+      const listTown = MUNICIPIOS.filter(mun => mun.idProvincia == district.value);
+      console.log(listTown);
+      town.innerHTML=''
+      listTown.forEach(mun => {
+        const option = document.createElement('option');
+        option.textContent = mun.nombre;
+        option.value = mun.idMunicipio;
+        town.append(option);
+      })
+    })
+  </script>
+</body>
+</html>
