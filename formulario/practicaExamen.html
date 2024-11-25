@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="fruits.js"></script>
+    <script src="pracExamen.js" defer></script>
+</head>
+<body>
+    <form action="process.php" method="post" id="formId" name="formName" target="">
+        Surname: <input type="text" name="surname" required>
+        Password: <input type="text" name="password">
+        <p>
+          <input type="radio" id="labelId1" name="option" value="1">
+          <label for="labelId1">Opción 1</label>
+    
+          <label>
+            <input type="radio" name="option" value="2" checked> Opción 2
+          </label>
+        </p>
+        <p>
+          <input type="submit" value="Enviar">
+        </p>
+        <p>
+          <input type="checkbox" id="conditions" name="conditions" value="accept">
+          <label for="conditions">Aceptas las condiciones de registro</label>
+        </p>
+        <p>
+          <!-- <input type="checkbox" id="id93" name="fruitEat[]" value="93">
+          <label for="id93">Maracuya</label>
+    
+          <input type="checkbox" id="id4" name="fruitEat[]" value="4">
+          <label for="id4">Watermelon</label> -->
+        </p>
+      </form>
+</body>
+</html>

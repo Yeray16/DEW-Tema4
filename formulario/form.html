@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="process.php" method="post" id="formId" name="formName" target="">
+    <input type="text" name="surname" required>
+    <input type="text" name="password">
+    <p>
+      <input type="radio" id="labelId1" name="option" value="1">
+      <label for="labelId1">Opción 1</label>
+
+      <label>
+        <input type="radio" name="option" value="2" checked> Opción 2
+      </label>
+    </p>
+    <p>
+      <input type="submit" value="Enviar">
+    </p>
+    <p>
+      <input type="checkbox" id="conditions" name="conditions" value="accept">
+      <label for="conditions">Aceptas las condiciones de registro</label>
+    </p>
+    <p>
+      <!-- <input type="checkbox" id="id93" name="fruitEat[]" value="93">
+      <label for="id93">Maracuya</label>
+
+      <input type="checkbox" id="id4" name="fruitEat[]" value="4">
+      <label for="id4">Watermelon</label> -->
+    </p>
+  </form>
+  <script>
+    // 1. Con id.
+    const formId = document.getElementById('formId');
+    console.log('formId', formId);
+    // 2. Array de form.
+    console.log(document.forms[0]);
+    // 3. Array por nombre
+    console.log(document.forms['formName']);
+    // 4. Array por Id 
+    console.log(document.forms['formId']);
+
+    //const inputName = document.querySelector("input[name='surname']");
+    const inputName = formId.elements['surname'];
+    console.log(inputName.value);
+
+    formId.addEventListener('submit', (e) => {
+      e.preventDefault();
+      console.log('username: ', inputName.value);
+      const optionChecked = document.querySelector('input[name="option"]:checked');
+      console.log('option: ', optionChecked.value);
+
+      //console.log('fruit: ', document.querySelector('input[name="fruit"]:checked').value);
+      console.log('fruit: ', formId.elements['fruit'].value );
+      console.log('conditions', formId.elements['conditions'].checked);
+      console.log('fruitsEat', [...formId.elements['fruitEat[]']].filter(i => i.checked).map(i => i.value));
+      if ( [...formId.elements['fruitEat[]']].filter(i => i.checked).length > 0 ) {
+
+        formId.submit();
+      }
+    }); 
+
+    const fruits = [
+      {id: 23, name: "apple"},
+      {id: 53, name: "banana"},
+      {id: 2, name: "pinacle"},
+      {id: 8, name: "kiwi"},
+      {id: 89, name: "orange"},
+      {id: 135, name: "melon"}
+    ];
+
+    const pFruits = document.createElement('p');
+    fruits.forEach(fruit => {
+      const input = document.createElement('input');
+      input.type="radio";
+      input.id = 'fruit_' + fruit.id;
+      input.name = "fruit";
+      input.value = fruit.id;
+      input.required = true;
+
+      const label = document.createElement('label');
+      label.textContent = fruit.name;
+      // label.setAttribute('for', input.id);
+      label.htmlFor = input.id;
+
+      pFruits.append(input, label);
+    });     
+
+    formId.append(pFruits);
+
+    const pFruitsEat = document.createElement('p');
+    fruits.forEach(fruit => {
+      const input = document.createElement('input');
+      input.type="checkbox";
+      input.id = 'fruitEat_' + fruit.id;
+      input.name = "fruitEat[]";
+      input.value = fruit.id;
+
+      const label = document.createElement('label');
+      label.textContent = fruit.name;
+      // label.setAttribute('for', input.id);
+      label.htmlFor = input.id;
+
+      pFruitsEat.append(input, label);
+    });     
+    formId.append(pFruitsEat);
+  </script>
+</body>
+</html>

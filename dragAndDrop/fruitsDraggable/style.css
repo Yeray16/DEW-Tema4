@@ -1,0 +1,42 @@
+#fruits {
+    border: 1px solid blue;
+    background-color: lightblue;
+    padding: 10px;
+    text-align: center;
+}
+
+#fruits span {
+    font-size: 50px;
+    margin: 5px;
+    text-shadow: 5px 3px 10px grey;
+}
+
+#categories{
+    margin: 5px;
+    display: grid;
+    grid-gap: 10px;
+    grid-auto-columns: minmax(100px, auto);
+    grid-auto-rows: minmax(100px, auto);
+}
+
+#categories .category{
+    background-color: red;
+    grid-row: 1;
+}
+
+#categories .category h2{
+    text-align: center;
+    color: white;
+    margin: 3px;
+}
+
+#categories .category .panel{
+    margin: 2px;
+    background-color: salmon;
+    min-height: 80px;
+}
+
+.panel span {
+    font-size: 30px;
+    margin: 2px;
+}
